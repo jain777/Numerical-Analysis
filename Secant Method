@@ -1,0 +1,50 @@
+
+from math import *
+#importing function fx using the function fx
+def f(x):
+    return cos(x) - 3*x +1
+
+# Implementing Secant Method
+
+def secant(x0,x1,e,N):
+    
+    step = 1 #intitializing the step variable to check the number of iterations
+    condition = True
+    while condition:
+        if f(x0) == f(x1):
+            print('Divide by zero error!')
+            break
+        
+        x2 = x0 - (x1-x0)*f(x0)/( f(x1) - f(x0) ) 
+        0print("the number of iteratiosn is",step,"x1 is", x1, "f(x2) is",x2)
+        x0 = x1
+        x1 = x2
+        step = step + 1
+        
+        if step > N:
+            print('The series does not converge!')
+            break
+        
+        condition = abs(f(x2)) > e  #validating by checking the tolerance
+    print("The required root is",x2)
+
+
+# Input Section
+x0 = input('Enter First Guess: ')
+x1 = input('Enter Second Guess: ')
+e = input('Tolerance: ')
+N = input('Maximum Step: ') #this is the maximum number of steps you permit for a seried to converge
+
+# Converting x0 and e to float
+x0 = float(x0)
+x1 = float(x1)
+e = float(e)
+
+# Converting N to integer
+N = int(N)
+
+# Starting Secant Method
+secant(x0,x1,e,N)
+
+#after using 2 random first and second guesses we find the root is in between 0.5 and 0.7 so we take those as the first and second guesses to minimize the number of iterations.
+#With a first guess of 0.5 and the second guess of 0.7, a tolerance of 0.0001 and 50 maximum steps we get 0.60708976 as the root.
