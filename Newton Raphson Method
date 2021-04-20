@@ -1,0 +1,41 @@
+#Question 1
+#Newton raphson method
+from math import *
+
+def func(x): 
+    return (x*x*x - 2*x - 5)
+    #at first we define a function that takes in our original function
+
+def derivFunc(x): 
+    return (3*x*x - 2)
+  #then we define a function that takes in the derivative of f(x)
+
+def newRa( x ): # this is the newton raphsons function which gives out the root
+    h = func(x) / derivFunc(x)  #defining h as f(x) as f'(x)
+    count = 0
+    while abs(h) >= 0.0001:   
+      
+        h = func(x)/derivFunc(x) 
+          
+         
+        x = x - h 
+        count = count + 1
+      
+    print("The root is : ", 
+                             "%.4f"% x,) 
+    print("Number of iterations:", count)
+  
+ 
+
+#x0 = 2 we can take this as the input because we can see that the value of root would be around 2, though the initial value plays no role in determining the root as long as it is not 0.
+#we know that the the series wont be convergent when the value of f'(x0) is 0, 3x^2 -2 has 2 roots +-(2/3)^2. So we make sure not to take that as x0.
+
+newRa(float(input("Enter initial value:"))) 
+#for an initial value of 2 the output is 2.0946
+#the number of iterations for the same and a tolerance of 0.0001 is 3
+#now the convergence rate of newton raphson is better than that of bisection method, so it can be considered as a better method as it converges in a lesser number of iterations
+#even though the number of iterations are also dependent on the initial steps(in newton raphson) and intial and final guesses (in bisection)
+# the number of iterations required is less in newton raphson method so it is efficient.
+# due to small converging rate the bisection method is a better converger and guarentees convergence as it is slow and steady.
+# newton raphson method needs only a single function evaaluation per iteration so the time efficieny is better.
+# both the methods have their own perks
