@@ -1,0 +1,53 @@
+#Given function : (e^x) * cos(x)
+#Implementing Gaussian quadrature with three points.
+from math import *
+x = [0.7745966692414834, 0, -0.7745966692414834]  # making the arrays of weights and nodes.
+c = [0.5555555555555556, 0.8888888888888888, 0.5555555555555556]
+a =-1  # defining the upper and lower integral limits.
+b = 1
+tildec=[]
+tildex=[]
+f=[]
+for i in c:
+# implementing the formula
+  tildec.append((b-a)*i/2)
+for j in x:
+ 
+  tildex.append((b-a)*j/(2) + (b+a)/2)
+for k in tildex:
+  f.append(exp(k)*cos(k))
+#print(f)
+ 
+value=tildec[1]*f[1] + tildec[0]*f[0] + tildec[2]*f[2]
+print("The integration for the limits -1 to 1 is ",value)
+#output: The integration for the limits -1 to 1 is  1.9333904692642978
+#Exact integration is 1.933421497...
+#This implies we are right upto 3 decimal places
+
+
+
+#PART 2
+
+#Implementing Gaussian quadrature with three points.
+from math import *
+x = [0.7745966692414834, 0, -0.7745966692414834]  # making the arrays of weights and nodes.
+c = [0.5555555555555556, 0.8888888888888888, 0.5555555555555556]
+a =0.5  # defining the upper and lower integral limits.
+b = 1.5
+tildec=[]
+tildex=[]
+f=[]
+for i in c:
+# implementing the formula
+  tildec.append((b-a)*i/2)
+for j in x:
+ 
+  tildex.append((b-a)*j/(2) + (b+a)/2)
+for k in tildex:
+  f.append(exp(k)*cos(k))
+#print(f)
+ 
+value=tildec[1]*f[1] + tildec[0]*f[0] + tildec[2]*f[2]
+print("The integration for the limits 0.5 to 1.5 is ",value)
+#output: The integration for the limits 0.5 to 1.5 is  1.2750690365758517
+#Exact integration is 1.275078201..... this implies we are right upto 4 decimal places.
