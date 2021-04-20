@@ -1,0 +1,43 @@
+# Defining Function
+def f(x):
+    return x*x*x - 2*x - 5 #importing the given function 
+
+# Implementing Bisection Method
+
+def bis(x0,x1,e):
+    step = 1
+    #initializing a step variable
+    condition = True
+    while condition:
+        x2 = (x0 + x1)/2   
+        print("the number of iteratiosn is",step,"x1 is", x1, "f(x2) is",x2)
+
+        if f(x0) * f(x2) < 0:   #checking at which two points the function multiplication is negative.
+            x1 = x2             
+        else:
+            x0 = x2                   #if not negative changing the value of x0 to x2
+        
+        step = step + 1              # incrementing the step variable to count the number of iterations 
+        condition = abs(f(x2)) > e   #checking the eligibility of our iteration by comparing it with the tolerance. 
+
+    print("The required root is", x2)
+    print("The total number of iterations are:",step)
+
+# Inputting 
+x0 = input('First Guess: ')
+x1 = input('Second Guess: ')
+e = input('Tolerance: ')
+# the estimate root can be between 2 and 3 even though the number of iterations depend a lot upon first and second guesses so we would ensure the same initial guess in netwon raphson method
+
+x0 = float(x0)
+x1 = float(x1)
+e = float(e)
+
+# Checking Correctness of initial guess values and bisecting
+if f(x0) * f(x1) > 0.0:
+    print('Given guess values do not bracket the root.')
+    print('Try Again with different guess values.')
+else:
+    bis(x0,x1,e)
+    
+#for the a first guess of 2 and the second guess of 3 the total number of iterations are 15 and the root is 2.09454345703125
