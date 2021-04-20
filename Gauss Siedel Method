@@ -1,0 +1,51 @@
+#Question 3
+# Gauss Seidel Method
+# Equations in their diagnolly dominant form
+f1 = lambda x,y,z: (6-y-z)/10
+f2 = lambda x,y,z: (6-x-z)/10
+f3 = lambda x,y,z: (6-y-z)/10
+
+# Initializing variables
+a=list(map(int,input('enter x0,y0,z0 :\n').split()))
+x0 = a[0] 
+y0 = a[1]
+z0 = a[2]
+count = 1
+
+# Inputting the tolerance (preferably 0.0001)
+e = float(input('Enter tolerable error: '))
+
+# IImplementing the Gauss Siedel method
+
+
+condition = True    # Condition is marked as true at first 
+
+for i in range(3) :
+    x1 = f1(x0,y0,z0)
+    y1 = f2(x1,y0,z0)
+    z1 = f3(x1,y1,z0)
+    print((x1,y1,z1))
+    e1 = abs(x0-x1);      # comparing each error with the tolerance we had initialized.0
+    e2 = abs(y0-y1);
+    e3 = abs(z0-z1);
+    
+    count += 1
+    x0 = x1
+    y0 = y1
+    z0 = z1
+    
+    condition = e1>e and e2>e and e3>e   #now if thisis false the condition variable becomes fasle and we get a break in loop
+
+#When 0 0 0 is and a tolerance of 0.0001 is taken entered we get 
+# The answer we get is given below
+# (0.6, 0.54, 0.546)
+# (0.49139999999999995, 0.49626000000000003, 0.49577399999999994)
+# (0.5007965999999999, 0.50034294, 0.500388306)
+
+# When 10 10 10 and a tolerance of 0.0001 is entered  the answer we get is given below
+# (-1.4, -0.25999999999999995, -0.374)
+# (0.6634, 0.5710599999999999, 0.580294)
+# (0.4848646, 0.49348413999999996, 0.492622186) 
+
+# This is a clear example that if the intitial value is given already in the question it can change the outputs.
+#The default value of intial inputs is therefore taken as 0 0 0.
